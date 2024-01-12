@@ -3,6 +3,7 @@ import { ApplicationConfig, InjectionToken } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
 import { createInjectionToken } from 'ngxtension/create-injection-token';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { initializeApp } from 'firebase/app';
 import {
@@ -16,7 +17,7 @@ import { environment } from '../environments/environment';
 
 const app = initializeApp(environment.firebase);
 
-export const [, , AUTH] = createInjectionToken(() => {
+export const [injectFirebaseAuth] = createInjectionToken(() => {
   const auth = getAuth();
   if (environment.useEmulators) {
     connectAuthEmulator(auth, 'http://localhost:9099', {
@@ -26,7 +27,7 @@ export const [, , AUTH] = createInjectionToken(() => {
   return auth;
 });
 
-export const [, , FIRESTORE] = createInjectionToken(() => {
+export const [injectFirestore] = createInjectionToken(() => {
   let firestore: Firestore;
   if (environment.useEmulators) {
     firestore = initializeFirestore(app, {});
@@ -42,5 +43,6 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(),
     provideHttpClient(withFetch()),
     provideClientHydration(),
+    provideAnimations(),
   ],
 };
