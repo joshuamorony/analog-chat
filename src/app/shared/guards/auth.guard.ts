@@ -3,13 +3,13 @@ import { Router, type CanActivateFn } from '@angular/router';
 import { injectAuthService } from '../data-access/auth.service';
 
 export const isAuthenticatedGuard = (): CanActivateFn => {
-  return () => {
-    const [authService, router] = [injectAuthService(), inject(Router)];
+	return () => {
+		const [authService, router] = [injectAuthService(), inject(Router)];
 
-    if (authService.user()) {
-      return true;
-    }
+		if (authService.user()) {
+			return true;
+		}
 
-    return router.parseUrl('/auth/login');
-  };
+		return router.parseUrl('/auth/login');
+	};
 };

@@ -1,5 +1,5 @@
 export interface Message {
-  author: string;
-  content: string;
-  created: string;
+	author: string;
+	content: string;
+	created: string;
 }

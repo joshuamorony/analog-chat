@@ -1,18 +1,18 @@
+import { provideFileRouter } from '@analogjs/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideFileRouter } from '@analogjs/router';
-import { createInjectionToken } from 'ngxtension/create-injection-token';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { createInjectionToken } from 'ngxtension/create-injection-token';
 
 import { initializeApp } from 'firebase/app';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import {
   Firestore,
-  initializeFirestore,
   connectFirestoreEmulator,
   getFirestore,
+  initializeFirestore,
 } from 'firebase/firestore';
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { environment } from '../environments/environment';
 
 const app = initializeApp(environment.firebase);
