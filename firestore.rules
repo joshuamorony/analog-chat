@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /messages/{message} {
+      allow read: if isAuthenticated();
+      allow create: if isValidMessage();
+      allow update, delete: if false
+    }
+
+    match /{document=**}{
+      allow read, write: if false
+    }
+
+  }
+
+  function isAuthenticated(){
+    return request.auth != null;
+  }
+
+  function isValidMessage(){
+    // email of incoming doc should match the authenticated user
+    return request.resource.data.author == request.auth.token.email;
+  }
+
+}
+
