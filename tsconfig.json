@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -18,7 +17,10 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": ["ES2022", "dom"],
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
     "useDefineForClassFields": false,
     "skipLibCheck": true
   },
@@ -29,7 +31,11 @@
     "strictTemplates": true
   },
   "references": [
-    { "path": "tsconfig.app.json" },
-    { "path": "tsconfig.spec.json" }
+    {
+      "path": "tsconfig.app.json"
+    },
+    {
+      "path": "tsconfig.spec.json"
+    }
   ]
 }
