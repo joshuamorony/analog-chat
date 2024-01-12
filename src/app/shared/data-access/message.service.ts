@@ -6,9 +6,9 @@ import { createService } from 'ngxtension/create-injection-token';
 import { collectionData } from 'rxfire/firestore';
 import { Subject, defer, exhaustMap, merge, type Observable } from 'rxjs';
 import { filter, map, retry } from 'rxjs/operators';
-import { injectFirestore } from 'src/app/app.config';
 import type { Message } from '../interfaces/message';
 import { injectAuthService } from './auth.service';
+import { injectFirestore } from '../../app.config';
 
 export const [injectMessageService] = createService(() => {
   const [firestore, authService] = [injectFirestore(), injectAuthService()];

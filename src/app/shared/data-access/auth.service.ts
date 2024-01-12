@@ -8,7 +8,7 @@ import {
 import { connect } from 'ngxtension/connect';
 import { createService } from 'ngxtension/create-injection-token';
 import { authState } from 'rxfire/auth';
-import { injectFirebaseAuth } from 'src/app/app.config';
+import { injectFirebaseAuth } from '../../app.config';
 import { type Credentials } from '../interfaces/credentials';
 
 export type AuthUser = User | null | undefined;
