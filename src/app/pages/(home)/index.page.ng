@@ -42,25 +42,25 @@ effect(() => {
   </div>
 </template>
 
-<styles>
-  .container {
+<style>
+.container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  }
+}
 
-  mat-toolbar {
+mat-toolbar {
   box-shadow: 0px -7px 11px 0px var(--accent-color);
-  }
+}
 
-  app-message-list {
+app-message-list {
   height: 100%;
   width: 100%;
-  }
+}
 
-  app-message-input {
+app-message-input {
   position: fixed;
   bottom: 0;
-  }
-</styles>
+}
+</style>

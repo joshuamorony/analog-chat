@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import type { Credentials } from '../../../../shared/interfaces/credentials';
 import type { LoginStatus } from '../data-access/login.service';
+import { JsonPipe } from '@angular/common';
 
 defineMetadata({
   imports: [
@@ -29,6 +30,7 @@ const loginForm = fb.nonNullable.group({
   email: [''],
   password: [''],
 });
+
 </script>
 
 <template>
@@ -57,22 +59,22 @@ const loginForm = fb.nonNullable.group({
   </form>
 </template>
 
-<styles>
-			form {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
+<style>
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-			button {
-				width: 100%;
-			}
+button {
+  width: 100%;
+}
 
-			mat-error {
-				margin: 5px 0;
-			}
+mat-error {
+  margin: 5px 0;
+}
 
-			mat-spinner {
-				margin: 1rem 0;
-			}
-</styles>
+mat-spinner {
+  margin: 1rem 0;
+}
+</style>

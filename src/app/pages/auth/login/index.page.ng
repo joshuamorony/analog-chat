@@ -36,9 +36,9 @@ effect(() => {
   </div>
 </template>
 
-<styles>
-  a {
-    margin: 2rem;
-    color: var(--accent-darker-color);
-  }
-</styles>
+<style>
+a {
+  margin: 2rem;
+  color: var(--accent-darker-color);
+}
+</style>

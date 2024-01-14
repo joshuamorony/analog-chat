@@ -19,28 +19,28 @@ const messageControl = new FormControl();
   </button>
 </template>
 
-<styles>
-			:host {
-				width: 100%;
-				position: relative;
-			}
+<style>
+:host {
+  width: 100%;
+  position: relative;
+}
 
-			input {
-				width: 100%;
-				background: var(--white);
-				border: none;
-				font-size: 1.2em;
-				padding: 2rem 1rem;
-			}
+input {
+  width: 100%;
+  background: var(--white);
+  border: none;
+  font-size: 1.2em;
+  padding: 2rem 1rem;
+}
 
-			button {
-				height: 100% !important;
-				position: absolute;
-				right: 0;
-				bottom: 0;
+button {
+  height: 100% !important;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 
-				mat-icon {
-					margin-right: 0;
-				}
-			}
-</styles>
+  mat-icon {
+    margin-right: 0;
+  }
+}
+</style>
