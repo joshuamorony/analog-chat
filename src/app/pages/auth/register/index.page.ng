@@ -1,0 +1,30 @@
+<script>
+import { effect, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { injectAuthService } from '../../../shared/data-access/auth.service';
+import {
+  injectRegisterService,
+  provideRegisterService,
+} from './data-access/register.service';
+import RegisterForm from './ui/register-form.ng';
+
+defineMetadata({
+  providers: [provideRegisterService()],
+})
+
+const router = inject(Router);
+const registerService = injectRegisterService();
+const authService = injectAuthService();
+
+effect(() => {
+  if (this.authService.user()) {
+    this.router.navigate(['home']);
+  }
+});
+</script>
+
+<template>
+  <div class="container gradient-bg">
+    <RegisterForm [status]="registerService.status()" (register)="registerService.createUser$.next($event)" />
+  </div>
+</template>

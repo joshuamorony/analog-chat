@@ -2,5 +2,6 @@
 	"singleQuote": true,
 	"useTabs": true,
 	"htmlWhitespaceSensitivity": "ignore",
+	"vueIndentScriptAndStyle": true,
 	"plugins": ["prettier-plugin-organize-imports"]
 }

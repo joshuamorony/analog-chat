@@ -1,0 +1,44 @@
+<script lang="ts">
+import { effect, inject } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Router, RouterLink } from '@angular/router';
+import { injectAuthService } from '../../../shared/data-access/auth.service';
+import {
+  injectLoginService,
+  provideLoginService,
+} from './data-access/login.service';
+import LoginForm from './ui/login-form.ng';
+
+defineMetadata({
+  imports: [RouterLink, MatProgressSpinnerModule],
+  providers: [provideLoginService()]
+})
+
+const loginService = injectLoginService();
+const authService = injectAuthService();
+const router = inject(Router);
+
+effect(() => {
+  if (authService.user()) {
+    router.navigate(['home']);
+  }
+});
+</script>
+
+<template>
+  <div class="container gradient-bg">
+    @if (authService.user() !== undefined) {
+    <LoginForm [loginStatus]="loginService.status()" (login)="loginService.login$.next($event)" />
+    <a routerLink="/auth/register">Create account</a>
+    } @else {
+    <mat-spinner diameter="50" />
+    }
+  </div>
+</template>
+
+<styles>
+  a {
+    margin: 2rem;
+    color: var(--accent-darker-color);
+  }
+</styles>
