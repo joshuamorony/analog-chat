@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { injectAuthService } from '../../../shared/data-access/auth.service';
@@ -17,8 +17,8 @@ const registerService = injectRegisterService();
 const authService = injectAuthService();
 
 effect(() => {
-  if (this.authService.user()) {
-    this.router.navigate(['home']);
+  if (authService.user()) {
+    router.navigate(['']);
   }
 });
 </script>

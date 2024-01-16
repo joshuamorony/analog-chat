@@ -20,7 +20,7 @@ const router = inject(Router);
 
 effect(() => {
   if (authService.user()) {
-    router.navigate(['home']);
+    router.navigate(['']);
   }
 });
 </script>

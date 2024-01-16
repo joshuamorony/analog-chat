@@ -54,12 +54,12 @@ mat-toolbar {
   box-shadow: 0px -7px 11px 0px var(--accent-color);
 }
 
-app-message-list {
+messagelist {
   height: 100%;
   width: 100%;
 }
 
-app-message-input {
+messageinput {
   position: fixed;
   bottom: 0;
 }
