@@ -10,7 +10,7 @@ const activeUser = input.required<AuthUser>();
 <template>
   <ul class="gradient-bg">
     @for (message of messages(); track message.created) {
-    <li [style.flex-direction]="message.author === activeUser?.email? 'row-reverse' : 'row'">
+    <li [style.flex-direction]="message.author === activeUser()?.email? 'row-reverse' : 'row'">
       <div class="avatar animate-in-primary">
         <img src="https://api.dicebear.com/7.x/bottts/svg?seed={{
 								message.author.split('@')[0]

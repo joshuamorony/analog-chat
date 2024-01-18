@@ -29,7 +29,6 @@ const loginForm = fb.nonNullable.group({
   email: [''],
   password: [''],
 });
-
 </script>
 
 <template>
@@ -45,14 +44,14 @@ const loginForm = fb.nonNullable.group({
       <mat-icon matPrefix>lock</mat-icon>
     </mat-form-field>
 
-    @if (loginStatus === 'error') {
+    @if (loginStatus() === 'error') {
     <mat-error>Could not log you in with those details.</mat-error>
     }
-    @if (loginStatus === 'authenticating') {
+    @if (loginStatus() === 'authenticating') {
     <mat-spinner diameter="50"></mat-spinner>
     }
 
-    <button mat-raised-button color="accent" type="submit" [disabled]="loginStatus === 'authenticating'">
+    <button mat-raised-button color="accent" type="submit" [disabled]="loginStatus() === 'authenticating'">
       Login
     </button>
   </form>
