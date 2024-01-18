@@ -1,12 +1,7 @@
 <script lang="ts">
-import { CommonModule } from '@angular/common';
-import { effect, signal, input } from '@angular/core';
+import { input } from '@angular/core';
 import type { AuthUser } from '../../../shared/data-access/auth.service';
 import type { Message } from '../../../shared/interfaces/message';
-
-defineMetadata({
-  imports: [CommonModule],
-})
 
 const messages = input.required<Message[]>();
 const activeUser = input.required<AuthUser>();
@@ -15,10 +10,7 @@ const activeUser = input.required<AuthUser>();
 <template>
   <ul class="gradient-bg">
     @for (message of messages(); track message.created) {
-    <li [ngStyle]="{
-						'flex-direction':
-							message.author === activeUser?.email ? 'row-reverse' : 'row'
-					}">
+    <li [style.flex-direction]="message.author === activeUser?.email? 'row-reverse' : 'row'">
       <div class="avatar animate-in-primary">
         <img src="https://api.dicebear.com/7.x/bottts/svg?seed={{
 								message.author.split('@')[0]
