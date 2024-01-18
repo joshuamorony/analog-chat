@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import type { Credentials } from '../../../../shared/interfaces/credentials';
 import type { LoginStatus } from '../data-access/login.service';
-import { JsonPipe } from '@angular/common';
 
 defineMetadata({
   imports: [
