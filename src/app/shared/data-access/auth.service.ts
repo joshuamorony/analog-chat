@@ -1,9 +1,9 @@
 import { signal } from '@angular/core';
 import {
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-	signOut,
-	type User,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  type User,
 } from 'firebase/auth';
 import { connect } from 'ngxtension/connect';
 import { createService } from 'ngxtension/create-injection-token';
@@ -14,35 +14,31 @@ import { type Credentials } from '../interfaces/credentials';
 export type AuthUser = User | null | undefined;
 
 export const [injectAuthService] = createService(() => {
-	const auth = injectFirebaseAuth();
+  const auth = injectFirebaseAuth();
 
-	// source$
-	const user$ = authState(auth);
+  const user$ = authState(auth);
+  const user = signal<AuthUser>(undefined);
 
-	// state
-	const user = signal<AuthUser>(undefined);
+  connect(user, user$);
 
-	// reducer
-	connect(user, user$);
-
-	return {
-		user: user.asReadonly(),
-		login: (credentials: Credentials) => {
-			return signInWithEmailAndPassword(
-				auth,
-				credentials.email,
-				credentials.password,
-			);
-		},
-		logout: () => {
-			signOut(auth);
-		},
-		createAccount: (credentials: Credentials) => {
-			return createUserWithEmailAndPassword(
-				auth,
-				credentials.email,
-				credentials.password,
-			);
-		},
-	};
+  return {
+    user: user.asReadonly(),
+    login: (credentials: Credentials) => {
+      return signInWithEmailAndPassword(
+        auth,
+        credentials.email,
+        credentials.password,
+      );
+    },
+    logout: () => {
+      signOut(auth);
+    },
+    createAccount: (credentials: Credentials) => {
+      return createUserWithEmailAndPassword(
+        auth,
+        credentials.email,
+        credentials.password,
+      );
+    },
+  };
 });

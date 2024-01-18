@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
 
 import { injectAuthService } from '../../shared/data-access/auth.service';
 import { injectMessageService } from '../../shared/data-access/message.service';
+import { isAuthenticatedGuard } from '../../shared/guards/auth.guard';
 import MessageInput from './ui/message-input.ng';
 import MessageList from './ui/message-list.ng';
+import { RouteMeta } from '@analogjs/router';
 
 defineMetadata({
   imports: [
