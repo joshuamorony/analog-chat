@@ -1,16 +1,16 @@
-import { signal } from '@angular/core';
+import { signal, inject } from '@angular/core';
 import { connect } from 'ngxtension/connect';
-import { createService } from 'ngxtension/create-injection-token';
+import { createInjectable } from 'ngxtension/create-injectable';
 import { Subject, map, merge, switchMap, from, EMPTY } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { injectAuthService } from '../../../../shared/data-access/auth.service';
+import { AuthService } from '../../../../shared/data-access/auth.service';
 import type { Credentials } from '../../../../shared/interfaces/credentials';
 
 export type RegisterStatus = 'pending' | 'creating' | 'success' | 'error';
 
-export const [injectRegisterService, provideRegisterService] = createService(
+export const RegisterService = createInjectable(
   () => {
-    const authService = injectAuthService();
+    const authService = inject(AuthService);
     const error$ = new Subject<any>();
     const createUser$ = new Subject<Credentials>();
 
@@ -39,5 +39,4 @@ export const [injectRegisterService, provideRegisterService] = createService(
       createUser$,
     };
   },
-  { isRoot: false },
 );
