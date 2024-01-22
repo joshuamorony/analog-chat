@@ -8,7 +8,7 @@ import LoginForm from './ui/login-form.ng';
 
 defineMetadata({
   imports: [RouterLink, MatProgressSpinnerModule],
-  providers: [provideLoginService()]
+  providers: [LoginService]
 })
 
 const router = inject(Router);
