@@ -38,5 +38,5 @@ export const RegisterService = createInjectable(
       status: status.asReadonly(),
       createUser$,
     };
-  },
+  }, { providedIn: 'scoped' }
 );

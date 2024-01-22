@@ -1,4 +1,4 @@
-import { computed, signal } from '@angular/core';
+import { computed, signal, inject } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { addDoc, collection, limit, orderBy, query } from 'firebase/firestore';
 import { connect } from 'ngxtension/connect';
@@ -74,4 +74,4 @@ export const MessageService = createInjectable(() => {
     error: computed(() => state().error),
     add$,
   };
-}, { providedIn: 'root' });
+});

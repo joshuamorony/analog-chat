@@ -36,5 +36,5 @@ export const LoginService = createInjectable(
     connect(status, nextStatus$);
 
     return { status: status.asReadonly(), login$ };
-  }
+  }, { providedIn: 'scoped' }
 );
