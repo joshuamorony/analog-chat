@@ -2,11 +2,8 @@
 import { effect, inject } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterLink } from '@angular/router';
-import { injectAuthService } from '../../../shared/data-access/auth.service';
-import {
-  injectLoginService,
-  provideLoginService,
-} from './data-access/login.service';
+import { AuthService } from '../../../shared/data-access/auth.service';
+import { LoginService } from './data-access/login.service';
 import LoginForm from './ui/login-form.ng';
 
 defineMetadata({
@@ -14,9 +11,9 @@ defineMetadata({
   providers: [provideLoginService()]
 })
 
-const loginService = injectLoginService();
-const authService = injectAuthService();
 const router = inject(Router);
+const loginService = inject(LoginService);
+const authService = inject(AuthService);
 
 effect(() => {
   if (authService.user()) {
