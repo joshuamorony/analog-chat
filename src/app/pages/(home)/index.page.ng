@@ -4,13 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
+import { RouteMeta } from '@analogjs/router';
 
-import { injectAuthService } from '../../shared/data-access/auth.service';
-import { injectMessageService } from '../../shared/data-access/message.service';
+import { AuthService } from '../../shared/data-access/auth.service';
+import { MessageService } from '../../shared/data-access/message.service';
 import { isAuthenticatedGuard } from '../../shared/guards/auth.guard';
 import MessageInput from './ui/message-input.ng';
 import MessageList from './ui/message-list.ng';
-import { RouteMeta } from '@analogjs/router';
 
 defineMetadata({
   imports: [
@@ -20,9 +20,13 @@ defineMetadata({
   ],
 })
 
-const messageService = injectMessageService();
-const authService = injectAuthService();
+export const routeMeta: RouteMeta = {
+  canActivate: [isAuthenticatedGuard()]
+}
+
 const router = inject(Router);
+const messageService = inject(MessageService);
+const authService = inject(AuthService);
 
 effect(() => {
   if (!authService.user()) {
