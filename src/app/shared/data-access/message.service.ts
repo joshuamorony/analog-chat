@@ -2,16 +2,17 @@ import { computed, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { addDoc, collection, limit, orderBy, query } from 'firebase/firestore';
 import { connect } from 'ngxtension/connect';
-import { createService } from 'ngxtension/create-injection-token';
+import { createInjectable } from 'ngxtension/create-injectable';
 import { collectionData } from 'rxfire/firestore';
 import { Subject, defer, exhaustMap, merge, type Observable } from 'rxjs';
 import { filter, map, retry } from 'rxjs/operators';
 import { injectFirestore } from '../../app.config';
 import type { Message } from '../interfaces/message';
-import { injectAuthService } from './auth.service';
+import { AuthService } from './auth.service';
 
-export const [injectMessageService] = createService(() => {
-  const [firestore, authService] = [injectFirestore(), injectAuthService()];
+export const MessageService = createInjectable(() => {
+  const authService = inject(AuthService);
+  const firestore = injectFirestore();
 
   const authUser$ = toObservable(authService.user);
 
@@ -73,4 +74,4 @@ export const [injectMessageService] = createService(() => {
     error: computed(() => state().error),
     add$,
   };
-});
+}, { providedIn: 'root' });

@@ -1,20 +1,17 @@
 <script lang="ts">
 import { effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { injectAuthService } from '../../../shared/data-access/auth.service';
-import {
-  injectRegisterService,
-  provideRegisterService,
-} from './data-access/register.service';
+import { AuthService } from '../../../shared/data-access/auth.service';
+import { RegisterService } from './data-access/register.service';
 import RegisterForm from './ui/register-form.ng';
 
 defineMetadata({
-  providers: [provideRegisterService()],
+  providers: [RegisterService],
 })
 
 const router = inject(Router);
-const registerService = injectRegisterService();
-const authService = injectAuthService();
+const registerService = inject(RegisterService);
+const authService = inject(AuthService);
 
 effect(() => {
   if (authService.user()) {

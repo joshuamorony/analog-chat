@@ -6,14 +6,14 @@ import {
   type User,
 } from 'firebase/auth';
 import { connect } from 'ngxtension/connect';
-import { createService } from 'ngxtension/create-injection-token';
+import { createInjectable } from 'ngxtension/create-injectable';
 import { authState } from 'rxfire/auth';
 import { injectFirebaseAuth } from '../../app.config';
 import { type Credentials } from '../interfaces/credentials';
 
 export type AuthUser = User | null | undefined;
 
-export const [injectAuthService] = createService(() => {
+export const AuthService = createInjectable(() => {
   const auth = injectFirebaseAuth();
 
   const user$ = authState(auth);
@@ -41,4 +41,4 @@ export const [injectAuthService] = createService(() => {
       );
     },
   };
-});
+}, { providedIn: 'root' });
