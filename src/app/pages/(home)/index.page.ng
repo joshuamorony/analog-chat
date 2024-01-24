@@ -20,10 +20,9 @@ defineMetadata({
   ],
 })
 
-// This can be uncommented when new release of AnalogJS is out
-// export const routeMeta: RouteMeta = {
-//  canActivate: [isAuthenticatedGuard()]
-// }
+export const routeMeta: RouteMeta = {
+  canActivate: [isAuthenticatedGuard()]
+}
 
 const router = inject(Router);
 const messageService = inject(MessageService);
